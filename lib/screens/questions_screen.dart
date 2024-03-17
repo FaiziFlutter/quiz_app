@@ -36,7 +36,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           ...currentQuestion.getShuffledAnswer().map((answers) {
