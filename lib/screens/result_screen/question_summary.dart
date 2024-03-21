@@ -14,11 +14,13 @@ class QuestionsSummary extends StatelessWidget {
       color: green,
       child: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ...summaryData.map(
               (data) {
-                return SizedBox(
-                  height: height * 0.12,
+                return Padding(
+                  padding: EdgeInsets.only(
+                      bottom: height * 0.03, top: height * 0.01),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -43,7 +45,7 @@ class QuestionsSummary extends StatelessWidget {
                           children: [
                             Text(
                               data['question'].toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),

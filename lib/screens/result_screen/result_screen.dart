@@ -34,9 +34,13 @@ class ResultScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'You answered $totalCorrectQuestions out of $totalNumQuestions questions correctly',
-            style: TextStyle(color: primary, fontWeight: FontWeight.bold),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * 0.07),
+            child: Text(
+              'You answered $totalCorrectQuestions out of $totalNumQuestions questions correctly',
+              style:
+                  const TextStyle(color: primary, fontWeight: FontWeight.bold),
+            ),
           ),
           SizedBox(
             height: height * 0.06,
@@ -47,8 +51,8 @@ class ResultScreen extends StatelessWidget {
           ),
           ElevatedButton.icon(
             onPressed: restart,
-            icon: Icon(Icons.restart_alt),
-            label: Text('Restart'),
+            icon: const Icon(Icons.restart_alt),
+            label: const Text('Restart'),
           )
         ],
       ),

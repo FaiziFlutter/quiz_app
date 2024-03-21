@@ -27,31 +27,34 @@ class _QuestionScreenState extends State<QuestionScreen> {
     final currentQuestion = questions[currentQuestionindex];
 
     return Scaffold(
-        body: Container(
-      width: width,
-      padding: EdgeInsets.all(width * 0.07),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
+        body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: width * 0.07),
+          child: Text(
             currentQuestion.question,
             textAlign: TextAlign.center,
             style:
                 TextStyle(fontSize: width * 0.04, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
-            height: height * 0.05,
-          ),
-          ...currentQuestion.getShuffledAnswer().map((answers) {
-            return CustomElevatedButton(
+        ),
+        SizedBox(
+          height: height * 0.05,
+        ),
+        ...currentQuestion.getShuffledAnswer().map((answers) {
+          return Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: width * 0.07, vertical: height * 0.003),
+            child: CustomElevatedButton(
                 onPressed: () {
                   answerQuestion(answers);
                 },
-                text: answers);
-          })
-        ],
-      ),
+                text: answers),
+          );
+        })
+      ],
     ));
   }
 }
