@@ -3,6 +3,7 @@ import 'package:quiz_app/model/questions_dummy.dart';
 import 'package:quiz_app/screens/questions_screen.dart';
 import 'package:quiz_app/screens/result_screen/result_screen.dart';
 import 'package:quiz_app/screens/start_screen.dart';
+import 'package:quiz_app/utils/colors.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -30,6 +31,13 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  void restart() {
+    setState(() {
+      selectedAnswer = [];
+      activeScreen = 'question_screen';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     dynamic screenWidget = activeScreen == 'start_screen'
@@ -40,15 +48,17 @@ class _QuizState extends State<Quiz> {
             },
           );
     if (activeScreen == 'result_screen') {
-      screenWidget = ResultScreen(selectedAnswer);
+      screenWidget = ResultScreen(
+        selectedAnswer,
+        restart: restart,
+      );
     }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Quiz App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 189, 5, 51)),
+        colorScheme: ColorScheme.fromSeed(seedColor: primary),
         useMaterial3: true,
       ),
       home: screenWidget,

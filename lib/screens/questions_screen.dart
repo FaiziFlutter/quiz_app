@@ -21,12 +21,15 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
     final currentQuestion = questions[currentQuestionindex];
 
     return Scaffold(
         body: Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(20),
+      width: width,
+      padding: EdgeInsets.all(width * 0.07),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -34,10 +37,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
           Text(
             currentQuestion.question,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            style:
+                TextStyle(fontSize: width * 0.04, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: height * 0.05,
           ),
           ...currentQuestion.getShuffledAnswer().map((answers) {
             return CustomElevatedButton(
